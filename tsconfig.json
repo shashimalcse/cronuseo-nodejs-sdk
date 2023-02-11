@@ -6,6 +6,7 @@
     "outDir": "./dist",
     "noImplicitAny": true,
     "declaration": true,
+    "types": ["@types/jest"],
   }, 
   "include": [
     "./src/**/*.ts"
