@@ -7,9 +7,3 @@ test('check single permission', async () => {
   expect(response).toEqual(true);
 });
 
-test('check multi permission', async () => {
-  const cronuseo = new Cronuseo("http://localhost:8080/api/v1", "super", "JLE+1Z3c/jIQL+i+ORhI+jLbM5pXvdxNrKvIcrKVFss=");
-  const response  = await cronuseo.CheckPermissions("shashimal", ["write"], "doc")
-  expect(response).toEqual(["write"]);
-});
-

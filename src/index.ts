@@ -11,39 +11,18 @@ export class Cronuseo {
     this.token = token;
   }
 
-  async CheckPermission(username:string, permission:string, resource:string) {
+  async CheckPermission(username:string, action:string, resource:string) {
 
     try {
-      const response = await axios.post(`${this.endpoint}/${this.organization}/permission/check/username`, {
+      const response = await axios.post(`${this.endpoint}/${this.organization}/permission/check`, {
         username: username,
-        permission: permission,
+        action: action,
         resource: resource,
       }, {
         headers: {
           'Content-Type': 'application/json',
           'API_KEY': this.token
         }
-      });
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  async CheckPermissions(username:string, permissions:string[], resource:string) {
-
-    const headers = {
-        'Content-Type': 'application/json',
-        'API_KEY': this.token
-      }
-
-    try {
-      const response = await axios.post(`${this.endpoint}/${this.organization}/permission/check/multi_actions`, {
-        username:username,
-        permissions: permissions.map((permission) => {return {permission: permission}}),
-        resource: resource,
-      }, {
-        headers: headers
       });
       return response.data;
     } catch (error) {
